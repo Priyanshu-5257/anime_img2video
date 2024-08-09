@@ -1599,7 +1599,7 @@ def main():
                             for val_img_idx in range(args.num_validation_images):
                                 num_frames = args.num_frames
                                 video_frames = pipeline(
-                                    load_image('Manga-panel.webp').resize((args.width, args.height)),
+                                    load_image('demo.jpg').resize((args.width, args.height)),
                                     height=args.height,
                                     width=args.width,
                                     num_frames=num_frames,
