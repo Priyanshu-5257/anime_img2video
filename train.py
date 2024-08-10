@@ -1522,7 +1522,7 @@ def main():
 
                 if accelerator.is_main_process:
                     # save checkpoints!
-                    if global_step % args.checkpointing_steps == 0:
+                    if global_step % 1 == 0: #args.checkpointing_steps
                         # _before_ saving state, check if this save would set us over the `checkpoints_total_limit`
                         if args.checkpoints_total_limit is not None:
                             checkpoints = os.listdir(args.output_dir)
@@ -1558,12 +1558,12 @@ def main():
                             get_peft_model_state_dict(unwrapped_unet)
                         )
 
-                        StableVideoDiffusionPipeline.save_lora_weights(
-                            save_directory=save_path,
-                            unet_lora_layers=unet_lora_state_dict,
-                            safe_serialization=True,
-                        )
-
+                        # StableVideoDiffusionPipeline.save_lora_weights(
+                        #     save_directory=save_path,
+                        #     unet_lora_layers=unet_lora_state_dict,
+                        #     safe_serialization=True,
+                        # )
+                        unwrapped_unet.save_pretrained(save_path)
                         logger.info(f"Saved state to {save_path}")
                     # sample images!
                     if (
