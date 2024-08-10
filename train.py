@@ -1522,7 +1522,7 @@ def main():
 
                 if accelerator.is_main_process:
                     # save checkpoints!
-                    if global_step % 1 == 0: #args.checkpointing_steps
+                    if global_step % 1 == args.checkpointing_steps: #args.checkpointing_steps
                         # _before_ saving state, check if this save would set us over the `checkpoints_total_limit`
                         if args.checkpoints_total_limit is not None:
                             checkpoints = os.listdir(args.output_dir)
